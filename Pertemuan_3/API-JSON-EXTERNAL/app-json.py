@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 #fungsi untuk memuat data dari file json
 def load_data():
-    with open('API-JSON-EXTERNAL/data.json', 'r') as f:
+    with open('Pertemuan_3/API-JSON-EXTERNAL/data.json', 'r') as f:
         return json.load(f)
 
 #endpoint untuk mengambil semua data
