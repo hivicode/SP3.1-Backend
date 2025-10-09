@@ -19,24 +19,6 @@ Instal dependensi:
 pip install Flask
 ```
 
-### Cara Menjalankan
-
-Karena kode membaca berkas JSON menggunakan path relatif `Tugas 1/...`, Anda harus menjalankan aplikasi dari direktori `Pertemuan_3` (BUKAN dari dalam folder `Tugas 1`).
-
-1) Pindah ke direktori proyek pertemuan 3:
-
-```bash
-cd /home/bi/Documents/SP3.1-Backend/Pertemuan_3
-```
-
-2) Jalankan aplikasi:
-
-```bash
-python3 "Tugas 1/api-produk.py"
-```
-
-Server akan berjalan di `http://127.0.0.1:5000` (mode debug aktif).
-
 ### Endpoint
 
 - GET `/` — Cek status API
@@ -114,7 +96,6 @@ Jika `id` tidak ditemukan, server akan mengembalikan status `404` dengan pesan y
 
 ### Catatan
 
-- Jalankan dari direktori `Pertemuan_3` agar path relatif `Tugas 1/snacks.json` dan `Tugas 1/drinks.json` terbaca dengan benar.
 - Untuk perubahan data, sunting berkas JSON terkait dan restart server.
 
 
