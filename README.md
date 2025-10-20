@@ -12,6 +12,10 @@ Mempelajari pembuatan RESTful API dengan Flask dan pengelolaan data JSON.
 Mempelajari sistem routing dan autentikasi dalam Flask.
 [Lihat README lengkap](Pertemuan_4/README.md)
 
+### Pertemuan 5 - CRUD dengan Flask & MySQL
+Mempelajari operasi CRUD terhubung ke database MySQL menggunakan `flask-mysqldb`.
+[Lihat README lengkap](pertemuan_5/README.md)
+
 ## 🚀 Quick Start
 
 1. Clone repository ini
@@ -33,17 +37,20 @@ SP3.1-Backend/
 │   ├── API-JSON-EXTERNAL/
 │   ├── API-JSON-INTERNAL/
 │   └── Tugas 1/
-└── Pertemuan_4/
-    ├── README.md
-    ├── ROUTING-APP/
-    ├── DECORATOR-APP/
-    └── ROUTING_LOGIN/
+├── Pertemuan_4/
+│   ├── README.md
+│   ├── ROUTING-APP/
+│   ├── DECORATOR-APP/
+│   └── ROUTING_LOGIN/
+└── pertemuan_5/
+    └── crud-flask-mysql/
 ```
 
 ## 🔧 Requirements
 
 * Python 3.6+
 * Flask
+* Untuk Pertemuan 5: `flask-mysqldb` dan MySQL Server
 
 ## 📖 Cara Menggunakan
 
