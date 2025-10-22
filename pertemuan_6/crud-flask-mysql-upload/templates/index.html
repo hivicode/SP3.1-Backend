@@ -29,7 +29,7 @@
                     <td>{{ file[2] }}</td>
                     <td>
                         {% if file[3] %}
-                        <img src="{{ url_for('uploaded_file', filename=file[3]) }}" alt="Foto Produk" width="80" height="80">
+                        <img src="{{ url_for('uploaded_file', filename=file[3]) }}" width="80px" alt="Foto Produk">
                         {% else %}
                         <span class="text-muted">Tidak ada foto</span>
                         {% endif %}
