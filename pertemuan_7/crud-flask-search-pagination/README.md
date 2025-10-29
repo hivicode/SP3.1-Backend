@@ -33,8 +33,8 @@ Edit konfigurasi MySQL di `app.py`:
 ```python
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'root'
-app.config['MYSQL_DB'] = 'crud_db'
+app.config['MYSQL_PASSWORD'] = 'root' # ganti dengan password anda
+app.config['MYSQL_DB'] = 'crud_upload_db'
 ```
 
 ## Menjalankan Aplikasi
