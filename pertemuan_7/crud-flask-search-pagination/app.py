@@ -7,7 +7,7 @@ app = Flask(__name__)
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = 'root' # ganti dengan password MySQL kamu sendiri
-app.config['MYSQL_DB'] = 'crud_db'
+app.config['MYSQL_DB'] = 'crud_upload_db'
 
 mysql = MySQL(app)
 

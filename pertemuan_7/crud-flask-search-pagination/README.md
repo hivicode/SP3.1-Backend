@@ -9,8 +9,8 @@ Aplikasi web untuk menampilkan data produk UMKM dengan fitur pencarian berdasark
 ## Setup Database
 
 ```sql
-CREATE DATABASE crud_db;
-USE crud_db;
+CREATE DATABASE crud_upload_db;
+USE crud_upload_db;
 
 CREATE TABLE stok (
     kode VARCHAR(50) PRIMARY KEY,
