@@ -15,8 +15,10 @@ USE crud_db;
 CREATE TABLE stok (
     kode VARCHAR(50) PRIMARY KEY,
     nama VARCHAR(100) NOT NULL,
-    harga INT NOT NULL,
+    harga INT NOT NULL
 );
+```
+
 
 ## Instalasi
 
@@ -31,7 +33,7 @@ Edit konfigurasi MySQL di `app.py`:
 ```python
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'root' # ganti dengan password anda sendiri
+app.config['MYSQL_PASSWORD'] = 'root'
 app.config['MYSQL_DB'] = 'crud_db'
 ```
 
