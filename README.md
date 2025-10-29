@@ -36,6 +36,13 @@ Mempelajari operasi CRUD dengan fitur upload file gambar.
 
 [Lihat README lengkap](pertemuan_6/README.md)
 
+### Pertemuan 7 - Search dan Pagination
+Mempelajari implementasi fitur pencarian dan pagination pada aplikasi CRUD.
+
+- CRUD Flask dengan Search dan Pagination
+
+[Lihat README lengkap](pertemuan_7/README.md)
+
 ## Quick Start
 
 1. Clone repository ini
@@ -68,14 +75,17 @@ SP3.1-Backend/
 └── pertemuan_6/
     ├── README.md
     └── crud-flask-mysql-upload/
+└── pertemuan_7/
+    ├── README.md
+    └── crud-flask-search-pagination/
 ```
 
 ## Requirements
 
 - Python 3.6+
 - Flask
-- Flask-MySQLdb (untuk Pertemuan 5 dan 6)
-- MySQL Server (untuk Pertemuan 5 dan 6)
+- Flask-MySQLdb (untuk Pertemuan 5, 6, dan 7)
+- MySQL Server (untuk Pertemuan 5, 6, dan 7)
 
 ## Instalasi Dependencies
 
