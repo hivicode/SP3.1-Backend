@@ -43,6 +43,13 @@ Mempelajari implementasi fitur pencarian dan pagination pada aplikasi CRUD.
 
 [Lihat README lengkap](pertemuan_7/README.md)
 
+### UTS - CRUD Data Rumah untuk Developer Perumahan
+Aplikasi UTS yang menggabungkan semua materi pembelajaran dengan fitur CRUD lengkap, upload foto, search, dan pagination.
+
+- CRUD Data Rumah dengan Upload Foto, Search, dan Pagination
+
+[Lihat README lengkap](UTS/README.md)
+
 ## Quick Start
 
 1. Clone repository ini
@@ -78,14 +85,17 @@ SP3.1-Backend/
 └── pertemuan_7/
     ├── README.md
     └── crud-flask-search-pagination/
+└── UTS/
+    ├── README.md
+    └── crud-rumah/
 ```
 
 ## Requirements
 
 - Python 3.6+
 - Flask
-- Flask-MySQLdb (untuk Pertemuan 5, 6, dan 7)
-- MySQL Server (untuk Pertemuan 5, 6, dan 7)
+- Flask-MySQLdb (untuk Pertemuan 5, 6, 7, dan UTS)
+- MySQL Server (untuk Pertemuan 5, 6, 7, dan UTS)
 
 ## Instalasi Dependencies
 
