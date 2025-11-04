@@ -41,25 +41,25 @@
                 {% if rumah_list %}
                     {% for rumah in rumah_list %}
                     <tr>
-                        <td>{{ rumah[0] }}</td>
-                        <td>{{ rumah[1] }}</td>
-                        <td>{{ rumah[2] }}</td>
-                        <td>Rp {{ "{:,.0f}".format(rumah[3]) }}</td>
-                        <td>{{ rumah[4] }} m²</td>
-                        <td>{{ rumah[5] }} m²</td>
-                        <td>{{ rumah[6] }}</td>
-                        <td>{{ rumah[7] }}</td>
-                        <td>{{ rumah[8] }}</td>
+                        <td>{{ rumah.kode_rumah }}</td>
+                        <td>{{ rumah.nama_rumah }}</td>
+                        <td>{{ rumah.alamat }}</td>
+                        <td>Rp {{ rumah.harga|currency }}</td>
+                        <td>{{ rumah.luas_tanah }} m²</td>
+                        <td>{{ rumah.luas_bangunan }} m²</td>
+                        <td>{{ rumah.kamar_tidur }}</td>
+                        <td>{{ rumah.kamar_mandi }}</td>
+                        <td>{{ rumah.developer }}</td>
                         <td>
-                            {% if rumah[9] %}
-                            <img src="{{ url_for('uploaded_file', filename=rumah[9]) }}" width="80px" alt="Foto Rumah">
+                            {% if rumah.filename %}
+                            <img src="{{ url_for('uploaded_file', filename=rumah.filename) }}" width="80px" alt="Foto Rumah">
                             {% else %}
                             <span class="text-muted">Tidak ada foto</span>
                             {% endif %}
                         </td>
                         <td>
-                            <a href="{{ url_for('edit_rumah', id=rumah[0]) }}" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="{{ url_for('delete_rumah', id=rumah[0]) }}" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data rumah ini?')">Delete</a>
+                            <a href="{{ url_for('edit_rumah', id=rumah.kode_rumah) }}" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="{{ url_for('delete_rumah', id=rumah.kode_rumah) }}" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data rumah ini?')">Delete</a>
                         </td>
                     </tr>
                     {% endfor %}

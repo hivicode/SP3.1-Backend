@@ -7,6 +7,10 @@ from werkzeug.utils import secure_filename
 app = Flask(__name__)
 app.secret_key = 'secret123'
 
+@app.template_filter('currency')
+def currency_filter(value):
+    return "{:,.0f}".format(value)
+
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = 'root'
@@ -18,6 +22,20 @@ mysql = MySQL(app)
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
+
+def get_rumah_dict(row):
+    return {
+        'kode_rumah': row[0],
+        'nama_rumah': row[1],
+        'alamat': row[2],
+        'harga': row[3],
+        'luas_tanah': row[4],
+        'luas_bangunan': row[5],
+        'kamar_tidur': row[6],
+        'kamar_mandi': row[7],
+        'developer': row[8],
+        'filename': row[9] if len(row) > 9 else None
+    }
 
 @app.route('/')
 def index():
@@ -44,8 +62,10 @@ def index():
     else:
         cur.execute("SELECT * FROM rumah LIMIT %s OFFSET %s", (per_page, offset))
     
-    rumah_list = cur.fetchall()
+    rows = cur.fetchall()
     cur.close()
+    
+    rumah_list = [get_rumah_dict(row) for row in rows]
     
     return render_template('index.html', rumah_list=rumah_list, page=page, 
                          total_pages=total_pages, search_query=search_query)
