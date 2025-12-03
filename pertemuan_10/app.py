@@ -21,6 +21,11 @@ client = MongoClient("mongodb://localhost:27017/")
 db = client["crud_database"]
 collection = db["products"]
 
+try:
+    collection.create_index("kode", unique=True)
+except Exception:
+    pass
+
 @app.route("/")
 def index():
     data = list(collection.find())
@@ -34,6 +39,11 @@ def add():
         harga = request.form['harga']
         jumlah = request.form['jumlah']
         
+        existing = collection.find_one({'kode': kode})
+        if existing:
+            flash('Kode barang sudah ada! Kode barang harus unik.', 'error')
+            return redirect(url_for('add'))
+        
         filename = ''
         if 'file' in request.files:
             file = request.files['file']
@@ -46,13 +56,19 @@ def add():
                     flash('Ekstensi file tidak diizinkan! Hanya file dengan ekstensi: ' + ', '.join(ALLOWED_EXTENSIONS), 'error')
                     return redirect(url_for('add'))
         
-        collection.insert_one({
-            'kode': kode,
-            'nama': nama,
-            'harga': harga,
-            'jumlah': jumlah,
-            'gambar': filename
-        })
+        try:
+            collection.insert_one({
+                'kode': kode,
+                'nama': nama,
+                'harga': harga,
+                'jumlah': jumlah,
+                'gambar': filename
+            })
+            flash('Produk berhasil ditambahkan!', 'success')
+        except Exception as e:
+            flash('Kode barang sudah ada! Kode barang harus unik.', 'error')
+            return redirect(url_for('add'))
+        
         return redirect(url_for('index'))
     return render_template('add.html')
 
@@ -60,13 +76,11 @@ def add():
 def edit(id):
     item = collection.find_one({"_id": ObjectId(id)})
     if request.method == 'POST':
-        kode = request.form['kode']
         nama = request.form['nama']
         harga = request.form['harga']
         jumlah = request.form['jumlah']
         
         update_data = {
-            'kode': kode,
             'nama': nama,
             'harga': harga,
             'jumlah': jumlah
@@ -85,6 +99,7 @@ def edit(id):
                     return redirect(url_for('edit', id=id))
         
         collection.update_one({"_id": ObjectId(id)}, {"$set": update_data})
+        flash('Produk berhasil diupdate!', 'success')
         return redirect(url_for("index"))
     return render_template("edit.html", item=item)
 

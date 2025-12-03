@@ -23,7 +23,8 @@
         <form method="POST" enctype="multipart/form-data">
             <div class="mb-3">
                 <label>Kode Barang</label>
-                <input type="text" id="kode" name="kode" value="{{ item.kode }}" class="form-control" required>
+                <input type="text" id="kode" name="kode" value="{{ item.kode }}" class="form-control" readonly>
+                <small class="form-text text-muted">Kode barang tidak dapat diubah</small>
             </div>
             <div class="mb-3">
                 <label>Nama Barang</label>
