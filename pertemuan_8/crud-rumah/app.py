@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, send_from_directory
-from flask_mysqldb import MySQL
+import mysql.connector
 import os
-# import math  # Tidak digunakan lagi karena pagination di-comment
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
@@ -11,14 +10,18 @@ app.secret_key = 'secret123'
 def currency_filter(value):
     return "{:,.0f}".format(value)
 
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'root'
-app.config['MYSQL_DB'] = 'uts_rumah_db'
+db_config = {
+    'host': 'localhost',
+    'user': 'root',
+    'password': 'root',
+    'database': 'uts_rumah_db'
+}
+
 app.config['UPLOAD_FOLDER'] = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'uploads')
 app.config['ALLOWED_EXTENSIONS'] = {'jpg', 'jpeg', 'png', 'gif'}
 
-mysql = MySQL(app)
+def get_db_connection():
+    return mysql.connector.connect(**db_config)
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
@@ -44,7 +47,8 @@ def index():
     # per_page = 5
     # offset = (page - 1) * per_page
     
-    cur = mysql.connection.cursor()
+    conn = get_db_connection()
+    cur = conn.cursor()
     
     # if search_query:
     #     cur.execute("SELECT COUNT(*) FROM rumah WHERE nama_rumah LIKE %s OR alamat LIKE %s", ('%' + search_query + '%', '%' + search_query + '%'))
@@ -66,6 +70,7 @@ def index():
     
     rows = cur.fetchall()
     cur.close()
+    conn.close()
     
     rumah_list = [get_rumah_dict(row) for row in rows]
     
@@ -96,13 +101,15 @@ def add_rumah():
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
-        cur = mysql.connection.cursor()
+        conn = get_db_connection()
+        cur = conn.cursor()
         cur.execute("""
             INSERT INTO rumah (kode_rumah, nama_rumah, alamat, harga, luas_tanah, luas_bangunan, kamar_tidur, kamar_mandi, developer, filename) 
             VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
         """, (kode_rumah, nama_rumah, alamat, harga, luas_tanah, luas_bangunan, kamar_tidur, kamar_mandi, developer, filename))
-        mysql.connection.commit()
+        conn.commit()
         cur.close()
+        conn.close()
 
         return redirect(url_for('index'))
 
@@ -110,7 +117,8 @@ def add_rumah():
 
 @app.route('/edit/<id>', methods=['GET','POST'])
 def edit_rumah(id):
-    cur = mysql.connection.cursor()
+    conn = get_db_connection()
+    cur = conn.cursor()
     cur.execute("SELECT * FROM rumah WHERE kode_rumah = %s", (id,))
     rumah_data = cur.fetchone()
 
@@ -145,16 +153,19 @@ def edit_rumah(id):
                 luas_tanah = %s, luas_bangunan = %s, kamar_tidur = %s, kamar_mandi = %s, 
                 developer = %s WHERE kode_rumah = %s
             """, (kode_rumah, nama_rumah, alamat, harga, luas_tanah, luas_bangunan, kamar_tidur, kamar_mandi, developer, id))
-        mysql.connection.commit()
+        conn.commit()
         cur.close()
+        conn.close()
         return redirect(url_for('index'))
 
     cur.close()
+    conn.close()
     return render_template('edit.html', rumah_data=rumah_data)
 
 @app.route('/delete/<id>')
 def delete_rumah(id):
-    cur = mysql.connection.cursor()
+    conn = get_db_connection()
+    cur = conn.cursor()
     cur.execute("SELECT filename FROM rumah WHERE kode_rumah = %s", (id,))
     file_data = cur.fetchone()
     if file_data and file_data[0]:
@@ -162,8 +173,9 @@ def delete_rumah(id):
         if os.path.exists(os.path.join(app.config['UPLOAD_FOLDER'], file)):
             os.remove(os.path.join(app.config['UPLOAD_FOLDER'], file))
     cur.execute("DELETE FROM rumah WHERE kode_rumah = %s", (id,))
-    mysql.connection.commit()
+    conn.commit()
     cur.close()
+    conn.close()
     return redirect(url_for('index'))
 
 if __name__ == '__main__':

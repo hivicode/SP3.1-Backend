@@ -11,7 +11,7 @@ Mempelajari pembuatan RESTful API dengan Flask dan pengelolaan data JSON.
 - API JSON Internal
 - Tugas 1: API Produk
 
-[Lihat README lengkap](Pertemuan_3/README.md)
+[Lihat README lengkap](pertemuan_3/README.md)
 
 ### Pertemuan 4 - Routing dan Authentication
 Mempelajari sistem routing dan autentikasi dalam Flask.
@@ -20,7 +20,7 @@ Mempelajari sistem routing dan autentikasi dalam Flask.
 - Decorator App
 - Test: Routing + Login
 
-[Lihat README lengkap](Pertemuan_4/README.md)
+[Lihat README lengkap](pertemuan_4/README.md)
 
 ### Pertemuan 5 - CRUD dengan Flask & MySQL
 Mempelajari operasi CRUD terhubung ke database MySQL menggunakan flask-mysqldb.
@@ -43,8 +43,36 @@ Mempelajari implementasi fitur pencarian dan pagination pada aplikasi CRUD.
 
 [Lihat README lengkap](pertemuan_7/README.md)
 
+### Pertemuan 8 - CRUD Data Rumah dengan MySQL
+Aplikasi CRUD lengkap untuk mengelola data rumah dengan MySQL.
+
+- CRUD Data Rumah dengan Upload Foto
+
+[Lihat README lengkap](pertemuan_8/README.md)
+
+### Pertemuan 9 - CRUD dengan MongoDB
+Mempelajari operasi CRUD menggunakan MongoDB sebagai database non-relasional.
+
+- CRUD Flask dengan MongoDB (tanpa upload)
+
+[Lihat README lengkap](pertemuan_9%20(mongo)/README.md)
+
+### Pertemuan 10 - CRUD dengan MongoDB + Upload File
+Mempelajari operasi CRUD dengan MongoDB dan fitur upload file.
+
+- CRUD Flask dengan MongoDB + Upload File
+
+[Lihat README lengkap](pertemuan_10%20upload%20(mongo)/README.md)
+
+### Pertemuan 11 - CRUD dengan SQLite + Upload File
+Mempelajari operasi CRUD menggunakan SQLite sebagai database file-based.
+
+- CRUD Flask dengan SQLite + Upload File + Search + Pagination
+
+[Lihat README lengkap](pertemuan_11%20crud%20sqlite/README.md)
+
 ### UTS - CRUD Data Rumah untuk Developer Perumahan
-Aplikasi UTS yang menggabungkan semua materi pembelajaran dengan fitur CRUD lengkap, upload foto, search, dan pagination.
+Aplikasi UTS yang menggabungkan semua materi pembelajaran dengan fitur CRUD lengkap, upload foto, search, dan pagination menggunakan MySQL.
 
 - CRUD Data Rumah dengan Upload Foto, Search, dan Pagination
 
@@ -66,12 +94,12 @@ pip install flask
 ```
 SP3.1-Backend/
 ├── README.md
-├── Pertemuan_3/
+├── pertemuan_3/
 │   ├── README.md
 │   ├── API-JSON-EXTERNAL/
 │   ├── API-JSON-INTERNAL/
 │   └── Tugas 1/
-├── Pertemuan_4/
+├── pertemuan_4/
 │   ├── README.md
 │   ├── ROUTING-APP/
 │   ├── DECORATOR-APP/
@@ -79,12 +107,32 @@ SP3.1-Backend/
 ├── pertemuan_5/
 │   ├── README.md
 │   └── crud-flask-mysql/
-└── pertemuan_6/
-    ├── README.md
-    └── crud-flask-mysql-upload/
-└── pertemuan_7/
-    ├── README.md
-    └── crud-flask-search-pagination/
+├── pertemuan_6/
+│   ├── README.md
+│   └── crud-flask-mysql-upload/
+├── pertemuan_7/
+│   ├── README.md
+│   └── crud-flask-search-pagination/
+├── pertemuan_8/
+│   ├── README.md
+│   └── crud-rumah/
+├── pertemuan_9 (mongo)/
+│   ├── README.md
+│   ├── app.py
+│   ├── templates/
+│   └── static/
+├── pertemuan_10 upload (mongo)/
+│   ├── README.md
+│   ├── app.py
+│   ├── insert_data.py
+│   ├── templates/
+│   └── static/
+├── pertemuan_11 crud sqlite/
+│   ├── README.md
+│   ├── app.py
+│   ├── perumahan.db
+│   ├── templates/
+│   └── uploads/
 └── UTS/
     ├── README.md
     └── crud-rumah/
@@ -94,13 +142,36 @@ SP3.1-Backend/
 
 - Python 3.6+
 - Flask
-- Flask-MySQLdb (untuk Pertemuan 5, 6, 7, dan UTS)
-- MySQL Server (untuk Pertemuan 5, 6, 7, dan UTS)
+- Flask-MySQLdb (untuk Pertemuan 5, 6, 7, 8, dan UTS)
+- MySQL Server (untuk Pertemuan 5, 6, 7, 8, dan UTS)
+- MongoDB (untuk Pertemuan 9 dan 10)
+- SQLite3 (built-in Python, untuk Pertemuan 11)
 
 ## Instalasi Dependencies
 
+### Dependencies Umum
 ```bash
-pip install flask flask-mysqldb
+pip install flask
+```
+
+### Untuk MySQL (Pertemuan 5, 6, 7, 8, UTS)
+```bash
+pip install flask-mysqldb
+# atau alternatif:
+pip install mysql-connector-python
+```
+
+### Untuk MongoDB (Pertemuan 9, 10)
+```bash
+pip install pymongo flask-bootstrap
+```
+
+### Untuk SQLite (Pertemuan 11)
+SQLite sudah built-in di Python, tidak perlu install tambahan.
+
+### Install Semua Dependencies
+```bash
+pip install flask flask-mysqldb pymongo flask-bootstrap werkzeug
 ```
 
 ## Cara Menggunakan

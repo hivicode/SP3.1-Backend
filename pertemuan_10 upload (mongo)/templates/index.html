@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Flask MongoDB</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="p-4">
+    <div class="container">
+        <h2 align="center" class="mb-4">Data Rumah (MongoDB)</h2>
+        <a href="/add" class="btn btn-primary mb-3">Tambah Data Rumah</a>
+        
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Kode Rumah</th>
+                    <th>Nama Rumah</th>
+                    <th>Alamat</th>
+                    <th>Harga</th>
+                    <th>Luas Tanah</th>
+                    <th>Luas Bangunan</th>
+                    <th>Kamar Tidur</th>
+                    <th>Kamar Mandi</th>
+                    <th>Developer</th>
+                    <th>Foto</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in rumah_list %}
+                <tr>
+                    <td>{{ item.kode_rumah }}</td>
+                    <td>{{ item.nama_rumah }}</td>
+                    <td>{{ item.alamat }}</td>
+                    <td>{{ item.harga }}</td>
+                    <td>{{ item.luas_tanah }}</td>
+                    <td>{{ item.luas_bangunan }}</td>
+                    <td>{{ item.kamar_tidur }}</td>
+                    <td>{{ item.kamar_mandi }}</td>
+                    <td>{{ item.developer }}</td>
+                    <td>
+                        {% if item.filename %}
+                        <img src="/static/uploads/{{ item.filename }}" width="80">
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="/edit/{{ item._id }}" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="/delete/{{ item._id }}" class="btn btn-danger btn-sm" onclick="return confirm('Hapus data?')">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+

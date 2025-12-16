@@ -1,3 +1,19 @@
+CREATE DATABASE IF NOT EXISTS uts_rumah_db;
+USE uts_rumah_db;
+
+CREATE TABLE IF NOT EXISTS rumah (
+    kode_rumah   VARCHAR(10)  NOT NULL PRIMARY KEY,
+    nama_rumah   VARCHAR(100) NOT NULL,
+    alamat       VARCHAR(255) NOT NULL,
+    harga        BIGINT       NOT NULL,
+    luas_tanah   INT          NOT NULL,
+    luas_bangunan INT         NOT NULL,
+    kamar_tidur  INT          NOT NULL,
+    kamar_mandi  INT          NOT NULL,
+    developer    VARCHAR(100) NOT NULL,
+    filename     VARCHAR(255) NULL
+);
+
 -- Script SQL untuk insert data rumah contoh
 -- Pastikan database dan tabel sudah dibuat terlebih dahulu
 -- Gunakan: USE uts_rumah_db; sebelum menjalankan INSERT ini
