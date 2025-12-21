@@ -149,3 +149,6 @@ pertemuan_11 crud sqlite/
 - Kode rumah adalah Primary Key dan tidak bisa diubah setelah dibuat
 - SQLite cocok untuk aplikasi single-user atau development, untuk production dengan banyak user concurrent disarankan menggunakan PostgreSQL atau MySQL
 
+
+
+

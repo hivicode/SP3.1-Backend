@@ -140,3 +140,6 @@ pertemuan_10 upload (mongo)/
 - Folder `static/uploads/` akan dibuat otomatis untuk menyimpan file gambar
 - Kode rumah harus unik dan tidak bisa diubah setelah dibuat
 
+
+
+
