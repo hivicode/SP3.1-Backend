@@ -1,101 +1,210 @@
-## API Produk UMKM — Tugas 1
+# Tugas 1 - API Produk UMKM
 
-Aplikasi Flask sederhana untuk menyajikan data produk UMKM dari berkas JSON (`snacks.json` dan `drinks.json`). Mendukung endpoint untuk melihat semua produk per kategori dan detail produk berdasarkan `id`.
+Aplikasi Flask API untuk mengelola produk UMKM dengan kategori Snacks dan Drinks.
 
-### Struktur Berkas
+## 📋 Deskripsi
 
-- `api-produk.py`: Aplikasi Flask
-- `snacks.json`: Data produk kategori snack
-- `drinks.json`: Data produk kategori drink
+Aplikasi RESTful API untuk produk UMKM yang terbagi menjadi dua kategori: Snacks dan Drinks. Data produk disimpan dalam file JSON terpisah untuk setiap kategori.
 
-### Prasyarat
+## 🚀 Fitur
 
-- Python 3.8+
-- Pip
+- **GET /** - Halaman welcome/homepage
+- **GET /produk/snack** - Semua produk snack
+- **GET /produk/drink** - Semua produk drink
+- **GET /produk/snack/<id>** - Detail snack berdasarkan ID
+- **GET /produk/drink/<id>** - Detail drink berdasarkan ID
+- **Error Handling** - Error 404 jika produk tidak ditemukan
 
-Instal dependensi:
+## 📁 File
 
-```bash
-pip install Flask
-```
+- `api-produk.py` - Aplikasi Flask utama
+- `snacks.json` - Data produk snack
+- `drinks.json` - Data produk drink
 
-### Endpoint
-
-- GET `/` — Cek status API
-- GET `/produk/snack` — Daftar semua snack
-- GET `/produk/drink` — Daftar semua drink
-- GET `/produk/snack/<id>` — Detail snack berdasarkan `id`
-- GET `/produk/drink/<id>` — Detail drink berdasarkan `id`
-
-### Contoh Penggunaan (cURL)
-
-- Cek API:
+## 📦 Instalasi
 
 ```bash
-curl http://127.0.0.1:5000/
+pip install flask
 ```
 
-Contoh respons:
-
-```json
-{"pesan":"Selamat Datang Di Produk UMKM"}
-```
-
-- Semua snack:
+## 🚀 Menjalankan Aplikasi
 
 ```bash
-curl http://127.0.0.1:5000/produk/snack
+python api-produk.py
 ```
 
-Ringkasan respons:
+Akses di browser: `http://127.0.0.1:5000`
 
+## 🔌 API Endpoints
+
+### GET /
+Halaman welcome/homepage.
+
+**Response:**
 ```json
 {
-  "pesan": "Halaman Produk Semua Snack..",
-  "data": [
-    {"id":1, "nama":"Keripik Kentang", "harga":15000, ...},
-    {"id":2, "nama":"Coklat", "harga":12000, ...}
-  ]
-}
-```
-
-- Detail snack id 1:
-
-```bash
-curl http://127.0.0.1:5000/produk/snack/1
-```
-
-Contoh respons:
-
-```json
-{
-  "pesan": "Halaman Produk Snack dengan id = 1",
-  "data": {
-    "id": 1,
-    "nama": "Keripik Kentang",
-    "harga": 15000,
-    "deskripsi": "Keripik kentang renyah dengan rasa asin",
-    "kategori": "snack"
+  "message": "Welcome to UMKM Product API",
+  "endpoints": {
+    "snacks": "/produk/snack",
+    "drinks": "/produk/drink"
   }
 }
 ```
 
-- Semua drink:
+### GET /produk/snack
+Mengambil semua produk snack.
 
-```bash
-curl http://127.0.0.1:5000/produk/drink
+**Response:**
+```json
+[
+  {
+    "id": 1,
+    "nama": "Keripik Singkong",
+    "harga": 15000,
+    "stok": 50
+  },
+  ...
+]
 ```
 
-- Detail drink id 2:
+### GET /produk/drink
+Mengambil semua produk drink.
 
-```bash
-curl http://127.0.0.1:5000/produk/drink/2
+**Response:**
+```json
+[
+  {
+    "id": 1,
+    "nama": "Es Teh Manis",
+    "harga": 5000,
+    "stok": 100
+  },
+  ...
+]
 ```
 
-Jika `id` tidak ditemukan, server akan mengembalikan status `404` dengan pesan yang sesuai.
+### GET /produk/snack/<id>
+Mengambil detail snack berdasarkan ID.
 
-### Catatan
+**Response (Success):**
+```json
+{
+  "id": 1,
+  "nama": "Keripik Singkong",
+  "harga": 15000,
+  "stok": 50
+}
+```
 
-- Untuk perubahan data, sunting berkas JSON terkait dan restart server.
+**Response (Error 404):**
+```json
+{
+  "error": "Produk snack tidak ditemukan"
+}
+```
 
+### GET /produk/drink/<id>
+Mengambil detail drink berdasarkan ID.
 
+**Response:** Similar dengan snack endpoint
+
+## 💡 Konsep yang Dipelajari
+
+✅ Routing dengan multiple paths  
+✅ Dynamic routing dengan parameter  
+✅ Kategori produk (snack/drink)  
+✅ Multiple JSON files  
+✅ Error handling  
+✅ JSON response dengan `jsonify()`  
+✅ Organisasi data berdasarkan kategori  
+
+## 📝 Contoh Request
+
+### Menggunakan curl
+
+```bash
+# Welcome page
+curl http://localhost:5000/
+
+# Get all snacks
+curl http://localhost:5000/produk/snack
+
+# Get all drinks
+curl http://localhost:5000/produk/drink
+
+# Get snack by ID
+curl http://localhost:5000/produk/snack/1
+
+# Get drink by ID
+curl http://localhost:5000/produk/drink/1
+```
+
+### Menggunakan Browser
+
+Buka langsung di browser:
+- `http://localhost:5000/` - Welcome page
+- `http://localhost:5000/produk/snack` - Semua snack
+- `http://localhost:5000/produk/drink` - Semua drink
+- `http://localhost:5000/produk/snack/1` - Detail snack ID 1
+- `http://localhost:5000/produk/drink/1` - Detail drink ID 1
+
+## 🎯 Tujuan Pembelajaran
+
+1. Membuat API dengan multiple endpoints
+2. Routing dengan kategori
+3. Dynamic routing dengan parameter
+4. Mengelola multiple JSON files
+5. Error handling untuk produk tidak ditemukan
+6. Organisasi data berdasarkan kategori
+
+## 📚 Struktur Data JSON
+
+### snacks.json
+```json
+[
+  {
+    "id": 1,
+    "nama": "Keripik Singkong",
+    "harga": 15000,
+    "stok": 50
+  },
+  ...
+]
+```
+
+### drinks.json
+```json
+[
+  {
+    "id": 1,
+    "nama": "Es Teh Manis",
+    "harga": 5000,
+    "stok": 100
+  },
+  ...
+]
+```
+
+## ⚠️ Catatan Penting
+
+- File `snacks.json` dan `drinks.json` harus berada di folder yang sama dengan `api-produk.py`
+- ID harus unik dalam setiap kategori
+- Data dibaca setiap kali ada request (tidak di-cache)
+- File JSON harus valid, jika tidak aplikasi akan error
+
+## 🔧 Tips
+
+- Gunakan extension JSON Viewer di browser untuk melihat response yang rapi
+- Test API menggunakan Postman atau Insomnia
+- Pastikan file JSON memiliki format yang valid
+- ID produk harus berupa angka
+
+## 📊 Struktur Endpoint
+
+```
+/                           → Welcome page
+/produk/snack               → Semua snack
+/produk/snack/<id>         → Detail snack
+/produk/drink              → Semua drink
+/produk/drink/<id>         → Detail drink
+```

@@ -11,7 +11,7 @@ Mempelajari pembuatan RESTful API dengan Flask dan pengelolaan data JSON.
 - API JSON Internal
 - Tugas 1: API Produk
 
-[Lihat README lengkap](pertemuan_3/README.md)
+[Lihat README lengkap](pertemuan_03/README.md)
 
 ### Pertemuan 4 - Routing dan Authentication
 Mempelajari sistem routing dan autentikasi dalam Flask.
@@ -20,35 +20,35 @@ Mempelajari sistem routing dan autentikasi dalam Flask.
 - Decorator App
 - Test: Routing + Login
 
-[Lihat README lengkap](pertemuan_4/README.md)
+[Lihat README lengkap](pertemuan_04/README.md)
 
 ### Pertemuan 5 - CRUD dengan Flask & MySQL
 Mempelajari operasi CRUD terhubung ke database MySQL menggunakan flask-mysqldb.
 
 - CRUD Flask MySQL
 
-[Lihat README lengkap](pertemuan_5/README.md)
+[Lihat README lengkap](pertemuan_05/README.md)
 
 ### Pertemuan 6 - CRUD dengan Upload File
 Mempelajari operasi CRUD dengan fitur upload file gambar.
 
 - CRUD Flask MySQL dengan Upload File
 
-[Lihat README lengkap](pertemuan_6/README.md)
+[Lihat README lengkap](pertemuan_06/README.md)
 
 ### Pertemuan 7 - Search dan Pagination
 Mempelajari implementasi fitur pencarian dan pagination pada aplikasi CRUD.
 
 - CRUD Flask dengan Search dan Pagination
 
-[Lihat README lengkap](pertemuan_7/README.md)
+[Lihat README lengkap](pertemuan_07/README.md)
 
 ### Pertemuan 8 - CRUD Data Rumah dengan MySQL
 Aplikasi CRUD lengkap untuk mengelola data rumah dengan MySQL.
 
 - CRUD Data Rumah dengan Upload Foto
 
-[Lihat README lengkap](pertemuan_8/README.md)
+[Lihat README lengkap](pertemuan_08/README.md)
 
 ### Pertemuan 9 - CRUD dengan MongoDB
 Mempelajari operasi CRUD menggunakan MongoDB sebagai database non-relasional.
@@ -71,12 +71,20 @@ Mempelajari operasi CRUD menggunakan SQLite sebagai database file-based.
 
 [Lihat README lengkap](pertemuan_11%20crud%20sqlite/README.md)
 
-### UTS - CRUD Data Rumah untuk Developer Perumahan
+### Pertemuan 8 UTS - CRUD Data Rumah untuk Developer Perumahan
 Aplikasi UTS yang menggabungkan semua materi pembelajaran dengan fitur CRUD lengkap, upload foto, search, dan pagination menggunakan MySQL.
 
 - CRUD Data Rumah dengan Upload Foto, Search, dan Pagination
 
-[Lihat README lengkap](UTS/README.md)
+[Lihat README lengkap](pertemuan_08%20UTS/README.md)
+
+### UAS Project Perumahan
+Aplikasi final project untuk sistem manajemen perumahan dengan backend API dan frontend terpisah.
+
+- Backend API dengan SQLite
+- Frontend dengan HTML, CSS, dan JavaScript
+
+[Lihat README lengkap](UAS%20Project%20Perumahan/README.md)
 
 ## Quick Start
 
@@ -133,9 +141,15 @@ SP3.1-Backend/
 │   ├── perumahan.db
 │   ├── templates/
 │   └── uploads/
-└── UTS/
+├── pertemuan_08 UTS/
+│   ├── README.md
+│   └── crud-rumah/
+└── UAS Project Perumahan/
     ├── README.md
-    └── crud-rumah/
+    ├── Backend/
+    │   └── README.md
+    └── Frontend/
+        └── README.md
 ```
 
 ## Requirements
