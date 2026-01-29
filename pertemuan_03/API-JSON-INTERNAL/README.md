@@ -167,9 +167,7 @@ karyawan = [
 - Perhatikan perbedaan response untuk setiap HTTP method
 - Untuk implementasi real CRUD, perlu koneksi ke database
 
-## 🔄 Perbandingan dengan API-JSON-EXTERNAL
-
-| Aspek | JSON External | JSON Internal |
+## 🔄 Perbandingan dengan API-JSON-EXTERNAL| Aspek | JSON External | JSON Internal |
 |-------|---------------|---------------|
 | Sumber Data | File eksternal (`data.json`) | Data dalam kode Python |
 | Persistensi | Data tersimpan di file | Data hilang saat restart |

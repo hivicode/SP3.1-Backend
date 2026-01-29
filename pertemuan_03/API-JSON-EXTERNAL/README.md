@@ -129,8 +129,6 @@ File `data.json` harus memiliki format array of objects:
 - Untuk production, pertimbangkan untuk menggunakan database
 - File JSON harus valid, jika tidak aplikasi akan error
 
-## 🔧 Tips
-
-- Gunakan extension JSON Viewer di browser untuk melihat response yang rapi
+## 🔧 Tips- Gunakan extension JSON Viewer di browser untuk melihat response yang rapi
 - Test API menggunakan Postman atau Insomnia untuk pengalaman yang lebih baik
 - Pastikan file JSON memiliki format yang valid sebelum menjalankan aplikasi

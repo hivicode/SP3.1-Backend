@@ -130,8 +130,6 @@ app = Flask(__name__, template_folder=os.path.dirname(os.path.abspath(__file__))
 | Configuration | Custom `template_folder` | Default |
 | Use Case | Simple apps | Production apps |
 
-## 📝 Catatan
-
-- Template disimpan di folder yang sama dengan aplikasi
+## 📝 Catatan- Template disimpan di folder yang sama dengan aplikasi
 - Ini adalah contoh sederhana, untuk aplikasi yang lebih kompleks gunakan folder `templates/`
 - Setiap route merender template HTML yang berbeda

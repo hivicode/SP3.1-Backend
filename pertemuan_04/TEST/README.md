@@ -209,9 +209,7 @@ Semua protected routes menggunakan decorator ini:
 | Protected Pages | ❌ | 1 (dashboard) | 3 (dashboard, about, contact) |
 | Port | 5000 | 5001 | 5002 |
 
-## 📚 Pengembangan Lebih Lanjut
-
-Untuk meningkatkan aplikasi ini:
+## 📚 Pengembangan Lebih LanjutUntuk meningkatkan aplikasi ini:
 - Implementasi database untuk user management
 - Gunakan Flask-Login extension
 - Tambahkan password hashing

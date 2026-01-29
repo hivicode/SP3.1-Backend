@@ -174,9 +174,7 @@ Decorator ini:
 - Test akses protected route tanpa login
 - Untuk production, gunakan Flask-Login extension
 
-## 📚 Pengembangan Lebih Lanjut
-
-Untuk meningkatkan aplikasi ini:
+## 📚 Pengembangan Lebih LanjutUntuk meningkatkan aplikasi ini:
 - Implementasi database untuk user management
 - Gunakan Flask-Login extension
 - Tambahkan password hashing
